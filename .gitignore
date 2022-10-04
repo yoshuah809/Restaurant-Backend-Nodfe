@@ -30,3 +30,5 @@ API_KEY.js
 # secret
 /secret
 /src/secret.js
+dev.js
+
