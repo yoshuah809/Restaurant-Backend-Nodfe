@@ -9,6 +9,7 @@ const connectDB = require("./db");
 const cors = require("cors");
 const morgan = require("morgan");
 const authRoutes = require("./routes/auth");
+const categoryRoutes = require("./routes/category");
 require("dotenv").config();
 
 const app = express();
@@ -22,6 +23,7 @@ connectDB();
 const PORT = process.env.PORT || 3500;
 
 app.use("/api/auth", authRoutes);
+app.use("/api/category", categoryRoutes);
 
 app.use(express.urlencoded({ extended: false }));
 
