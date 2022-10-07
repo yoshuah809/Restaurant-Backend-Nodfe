@@ -10,6 +10,8 @@ const cors = require("cors");
 const morgan = require("morgan");
 const authRoutes = require("./routes/auth");
 const categoryRoutes = require("./routes/category");
+const productRoutes = require("./routes/product");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const app = express();
@@ -18,12 +20,14 @@ const app = express();
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
-
-connectDB();
-const PORT = process.env.PORT || 3500;
+app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/category", categoryRoutes);
+app.use("/api/product", productRoutes);
+
+connectDB();
+const PORT = process.env.PORT || 3500;
 
 app.use(express.urlencoded({ extended: false }));
 
